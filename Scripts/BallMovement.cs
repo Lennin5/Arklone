@@ -6,7 +6,7 @@ public class BallMovement : MonoBehaviour
 
 {
     Rigidbody2D rb;
-    float speed = 100f; // Velocidad con la que se moverá la pelota
+    float speed = 200f; // Velocidad con la que se moverá la pelota
 
     void Start()
     {
