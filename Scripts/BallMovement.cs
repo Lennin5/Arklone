@@ -6,7 +6,7 @@ public class BallMovement : MonoBehaviour
 
 {
     Rigidbody2D rb;
-    float speed = 200f; // Velocidad con la que se moverá la pelota
+    float speed = 50f; // Velocidad con la que se moverá la pelota
 
     void Start()
     {
@@ -14,11 +14,11 @@ public class BallMovement : MonoBehaviour
     }
     void Update()
     {
-        // Llamamos a la función StartGameOnPressSpace en cada frame para manejar el inicio del juego
-       StartGameOnPressSpace();
+        // Llamamos a la función OnPressSpace en cada frame para manejar el inicio del juego
+        OnPressSpace();
     }
 
-    void StartGameOnPressSpace()
+    void OnPressSpace()
     {
         // Si se presiona la tecla espacio
         if (Input.GetKeyDown(KeyCode.Space))
