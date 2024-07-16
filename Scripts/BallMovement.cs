@@ -6,8 +6,8 @@ public class BallMovement : MonoBehaviour
 
 {
     Rigidbody2D rb;
-    float speed = 100f; // Velocidad con la que se moverá la pelota
-    bool isStartedGame = false; // Variable para determinar si el juego ha iniciado
+    float speed = 50f; // Velocidad con la que se moverá la pelota
+    bool isBallLaunched = false; // Variable para determinar si el juego ha iniciado
 
     void Start()
     {
@@ -21,13 +21,13 @@ public class BallMovement : MonoBehaviour
 
     void OnPressSpace()
     {
-        if(!isStartedGame)
+        if(!isBallLaunched)
             // Si se presiona la tecla espacio
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 rb.AddForce(new Vector2(3f, 5f) * speed); // Agregamos una fuerza a la pelota en diagonal
                 transform.parent = null; // Despegamos la pelota de la paleta (componente padre)
-                isStartedGame = true; // Cambiamos el estado del juego a iniciado
+                isBallLaunched = true; // Cambiamos el estado del juego a iniciado
             }
     }
 
