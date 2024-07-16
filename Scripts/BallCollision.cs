@@ -20,6 +20,7 @@ public class BallCollision : MonoBehaviour
         if (collision.gameObject.tag == "Block")
         {
             Destroy(collision.gameObject); // Destruimos el objeto con el que colisionó la pelota
+            gameManager.DecreaseBlocks(); // Llamamos a la función DecreaseBlocks del script GameManager que disminuye la cantidad de bloques restantes
         }
     }
 
