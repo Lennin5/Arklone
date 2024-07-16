@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public void RestartScene()
     {
         // Recargamos la escena actual
-        SceneManager.LoadScene("SampleScene");
+        //SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

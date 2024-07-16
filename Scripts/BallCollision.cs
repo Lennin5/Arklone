@@ -16,8 +16,11 @@ public class BallCollision : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log("Collision detected, details: " + collision.gameObject.name);
-        if (collision.gameObject.tag == "Block") // Podemos usar también if(collision.gameObject.CompareTag("Block"))
+        // Podemos usar también if(collision.gameObject.CompareTag("Block"))
+        if (collision.gameObject.tag == "Block")
+        {
             Destroy(collision.gameObject); // Destruimos el objeto con el que colisionó la pelota
+        }
     }
 
     // Función que se ejecuta cuando la pelota entra en contacto con un trigger (un objeto con el componente Collider2D con la propiedad IsTrigger activada)
@@ -26,4 +29,5 @@ public class BallCollision : MonoBehaviour
         //Debug.Log("Se disparó el trigger, detalles: " + collider.gameObject.name);
         gameManager.RestartScene(); // Llamamos a la función RestartScene del script GameManager
     }
+
 }

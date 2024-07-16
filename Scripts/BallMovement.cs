@@ -21,14 +21,17 @@ public class BallMovement : MonoBehaviour
 
     void OnPressSpace()
     {
-        if(!isBallLaunched)
-            // Si se presiona la tecla espacio
+        if (!isBallLaunched)
+        {
+            // Si se presiona la tecla espacio      
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 rb.AddForce(new Vector2(3f, 5f) * speed); // Agregamos una fuerza a la pelota en diagonal
                 transform.parent = null; // Despegamos la pelota de la paleta (componente padre)
                 isBallLaunched = true; // Cambiamos el estado del juego a iniciado
             }
+        }
+            
     }
 
 }
