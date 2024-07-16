@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float globalSpeed = 5f; // Velocidad del movimiento de la paleta
+    float globalSpeed = 10f; // Velocidad del movimiento de la paleta
     float limitX = 4.8f;  // Límite horizontal del movimiento de la paleta
 
     void Update()
