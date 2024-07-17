@@ -45,4 +45,10 @@ public class GameManager : MonoBehaviour
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1; // .buildIndex nos da el índice de la escena actual, entonce sumamos 1 para obtener el índice de la siguiente escena (Nivel 2, 3, 4, etc.)
         SceneManager.LoadScene(nextSceneIndex); // Cargamos la siguiente escena
     }
+
+    // Función que se ejecuta cuando se presiona el botón de salir
+    public void ExitGame()
+    {
+        Application.Quit(); // Salimos del juego
+    }
 }
