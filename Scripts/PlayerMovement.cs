@@ -6,6 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
     float globalSpeed = 10f; // Velocidad del movimiento de la paleta
     float limitX = 4.8f;  // Límite horizontal del movimiento de la paleta
+    BallMovement ballMovement; // Variable para almacenar el script BallMovement
+
+    void Start()
+    {
+        ballMovement = FindObjectOfType<BallMovement>(); // Buscamos el script BallMovement en la escena (lo hace de manera automática, no es necesaria ninguna referencia)
+    }
 
     void Update()
     {
@@ -15,22 +21,30 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
+
         // Variables para determinar si la tecla izquierda o derecha está siendo presionada
         bool moveLeft = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
         bool moveRight = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
+        // Variables para determinar si se ha tocado el lado izquierdo o derecho de la pantalla
+        bool touchLeft = Input.touchCount > 0 && Input.GetTouch(0).position.x < Screen.width / 2;
+        bool touchRight = Input.touchCount > 0 && Input.GetTouch(0).position.x > Screen.width / 2;
 
         // Inicializamos el movimiento en 0
         float movement = 0f;
 
-        // Actualizamos el movimiento dependiendo de la tecla presionada
-        if (moveLeft)
+        // Actualizamos el movimiento dependiendo de la tecla presionada o el lado de la pantalla tocado
+        if (ballMovement.isBallLaunched == true)
         {
-            movement = -globalSpeed * Time.deltaTime;
+            if (moveLeft || touchLeft)
+            {
+                movement = -globalSpeed * Time.deltaTime;
+            }
+            else if (moveRight || touchRight)
+            {
+                movement = globalSpeed * Time.deltaTime;
+            }
         }
-        else if (moveRight)
-        {
-            movement = globalSpeed * Time.deltaTime;
-        }
+
 
         // Calculamos la nueva posición basada en la posición actual y el movimiento calculado
         float newPosition = transform.position.x + movement;
@@ -42,5 +56,4 @@ public class PlayerMovement : MonoBehaviour
             transform.position = new Vector3(newPosition, transform.position.y, transform.position.z);
         }
     }
-
 }
